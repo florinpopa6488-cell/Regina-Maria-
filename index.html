@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* Bara de progres pentru citire */
+    
         #progress-bar {
             position: fixed;
             top: 0;
@@ -49,8 +49,9 @@
 
         header {
             height: 100vh;
+           
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), 
-                        url('https://images.unsplash.com/photo-1599708141690-d93d299bb4bd?auto=format&fit=crop&q=80&w=1500');
+                        url('https://upload.wikimedia.org/wikipedia/commons/e/e9/Regina_Maria_a_Rom%C3%A2niei.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -88,6 +89,7 @@
             z-index: 2000;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             padding: 10px 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
@@ -123,6 +125,10 @@
             margin-bottom: 50px;
             border-bottom: 2px solid #e5e5e5;
             padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         h3 {
@@ -131,6 +137,20 @@
             font-size: 2rem;
             margin-top: 60px;
             font-style: italic;
+        }
+
+       
+        .crest-img {
+            height: 80px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .sidebar-crest {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            display: block;
         }
 
         .historical-block {
@@ -195,13 +215,73 @@
 
         .sidebar-note {
             float: right;
-            width: 300px;
+            width: 250px;
             margin: 0 0 30px 30px;
             padding: 25px;
             background: #f9f9f9;
             border: 1px solid #ddd;
             font-size: 0.95rem;
             font-family: 'Montserrat', sans-serif;
+            text-align: center;
+        }
+
+      
+        .interactive-name {
+            color: var(--royal-purple);
+            font-weight: bold;
+            cursor: pointer;
+            border-bottom: 1px dashed var(--gold-leaf);
+            transition: 0.3s;
+        }
+        .interactive-name:hover {
+            background-color: var(--royal-purple);
+            color: white;
+        }
+
+      
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 5000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9); 
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80vh;
+            border: 5px solid var(--gold-leaf);
+            object-fit: contain;
+        }
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover, .close:focus {
+            color: var(--gold-leaf);
+        }
+        #caption-modal {
+            margin: auto;
+            display: block;
+            width: 80%;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
         }
 
         footer {
@@ -231,12 +311,19 @@
             .main-content { padding: 40px 30px; }
             .img-gallery, .bio-info { flex-direction: column; grid-template-columns: 1fr; }
             .sidebar-note { width: 100%; float: none; margin: 20px 0; }
+            header h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
     <div id="progress-bar"></div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption-modal"></div>
+    </div>
 
     <header>
         <h1 class="reveal">MARIA</h1>
@@ -248,6 +335,7 @@
         <a href="#familie">Dinastie</a>
         <a href="#anturaj">Cercul de Aur</a>
         <a href="#razboi">Marele Razboi</a>
+        <a href="#paris">Conferința Paris</a>
         <a href="#apogeu">Încoronarea</a>
         <a href="#creatie">Mostenire</a>
     </nav>
@@ -255,7 +343,10 @@
     <div class="main-content">
         
         <section id="genealogie" class="reveal">
-            <h2>Rădăcinile unui Destin Imperial</h2>
+            <h2>
+                Rădăcinile unui Destin Imperial
+                <img src="stema_anglia.png" alt="Stema Regala a Marii Britanii" class="crest-img">
+            </h2>
             <div class="bio-info">
                 <div>
                     <p>Proveniența Mariei Alexandra Victoria nu a fost doar o coincidență a sângelui albastru, ci o sinteză a celor mai puternice forțe politice ale secolului al XIX-lea. Născută la Eastwell Park în 1875, ea a purtat în genele sale pragmatismul victorian al Imperiului Britanic și misticismul autocratic al Rusiei Romanovilor. Tatăl său, Alfred de Saxa-Coburg și Gotha, era un fin diplomat și ofițer de marină, în timp ce mama sa, Maria Alexandrovna, a adus la curtea de la Londra rigoarea și opulența de la Sankt Petersburg.</p>
@@ -271,24 +362,42 @@
 
         <section id="familie" class="reveal">
             <h2>Dinastia și Rețeaua Diplomatică</h2>
+            
             <div class="sidebar-note">
-                <strong>Principesa Ileana:</strong> Dintre toți copiii, Ileana a moștenit cel mai mult spiritul caritabil al mamei sale, devenind ulterior Maica Alexandra, fondatoarea unei mănăstiri în SUA, continuând astfel misticismul familiei.
+                <img src="stema_romania.jpg" alt="Stema Regatului României" class="sidebar-crest">
+                <strong>Simbolul Unirii:</strong> Stema României Întregite, sub care Dinastia și-a îndeplinit menirea istorică.
             </div>
+
+            <div style="float: left; width: 200px; margin-right: 20px; margin-bottom: 20px;">
+                <img src="ferdinand_maria.png" alt="Regele Ferdinand și Regina Maria" style="width:100%; border: 4px solid #eee;">
+            </div>
+
             <p>Căsătoria din 1893 cu Ferdinand de Hohenzollern-Sigmaringen a fost actul fondator al „Partidei Regale” în România. Deși începutul a fost marcat de rigoarea impusă de Regele Carol I, Maria și-a consolidat rapid poziția. Familia pe care a format-o a devenit un instrument de diplomație regională.</p>
             
-            <p><strong>Urmașii Coroanei:</strong></p>
+            <p style="clear:both;"><strong>Urmașii Coroanei (Click pe nume pentru portret):</strong></p>
             <ul>
-                <li><strong>Carol al II-lea:</strong> Un temperament impetuos, a cărui domnie a fost marcată de contradicții, dar care a moștenit de la mama sa pasiunea pentru cultură.</li>
-                <li><strong>Elisabeta (Regină a Greciei):</strong> O personalitate retrasă, care a simțit greutatea coroanei ca pe o povară existențială.</li>
+                <li>
+                    <span class="interactive-name" onclick="openModal('carol.png', 'Carol al II-lea și Principesa Elena')">Carol al II-lea</span>: 
+                    Supranumit și <em>Regele Culturii</em>, domnia sa (Restaurația din 1930) a adus o înflorire fără precedent a artei, arhitecturii și literaturii românești prin Fundațiile Regale. Totuși, personalitatea sa complexă și viața privată tumultuoasă au generat crize politice majore, culminând cu abdicarea din 1940 în favoarea fiului său, Mihai.
+                </li>
+                <li>
+                    <span class="interactive-name" onclick="alert('Te rog să adaugi o poză cu numele elisabeta.jpg în folder!')">Elisabeta (Regină a Greciei)</span>: 
+                    O personalitate retrasă, care a simțit greutatea coroanei ca pe o povară existențială.
+                </li>
                 <li><strong>Mărioara (Mignon, Regină a Iugoslaviei):</strong> Pilonul de stabilitate al alianțelor balcanice, iubită de poporul sârb.</li>
                 <li><strong>Nicolae:</strong> Regentul care a încercat să mențină echilibrul țării în anii de incertitudine.</li>
             </ul>
         </section>
 
         <section id="anturaj" class="reveal">
-            <h2>Cercul de Aur: Prietenii și Influențe</h2>
-            <p>Maria nu a condus singură. Ea s-a înconjurat de spirite luminate, formând un cerc intelectual care a modernizat estetica românească. Relația ei cu <strong>Barbu Știrbey</strong> a fost una de o profunzime politică și personală rară, acesta fiind consilierul din umbră care a ajutat la sincronizarea deciziilor Palatului cu realitățile interne.</p>
-            <p>În plan internațional, prietenia cu <strong>Loïe Fuller</strong> (celebra dansatoare americană) sau cu scriitoarea <strong>Martha Bibescu</strong> a conectat Bucureștiul la avangarda culturală a Parisului. Aceste legături nu erau simple amabilități, ci canale de influență prin care interesele României ajungeau în saloanele unde se decidea soarta lumii.</p>
+            <h2>Cercul de Aur: Prieteni și Influențe</h2>
+            <p>Maria nu a condus singură. Ea s-a înconjurat de spirite luminate. Relația ei cu 
+            <span class="interactive-name" onclick="openModal('stirbey.png', 'Regina Maria și Barbu Știrbey')">Barbu Știrbey</span> 
+            a fost una de o profunzime politică și personală rară, acesta fiind consilierul din umbră care a ajutat la sincronizarea deciziilor Palatului cu realitățile interne.</p>
+            
+            <p>În plan internațional, prietenia cu scriitoarea 
+            <span class="interactive-name" onclick="openModal('martha.png', 'Regina Maria și Martha Bibescu')">Martha Bibescu</span> 
+            a conectat Bucureștiul la avangarda culturală a Parisului. Aceste legături nu erau simple amabilități, ci canale de influență prin care interesele României ajungeau în saloanele unde se decidea soarta lumii.</p>
         </section>
 
         <div class="quote-box reveal">
@@ -298,17 +407,22 @@
         <section id="razboi" class="reveal">
             <h2>Marele Război: Rezistența de la Iași</h2>
             <p>Anul 1916 a reprezentat testul suprem. În timp ce armata română se retrăgea în Moldova sub presiunea Puterilor Centrale, Regina Maria a preluat comanda morală a națiunii. La Iași, în condiții de o precaritate extremă, ea a transformat suferința în speranță.</p>
-            <div class="img-gallery">
-                <div class="img-card">
-                    <img src="https://www.istorie-pe-scurt.ro/wp-content/uploads/2015/10/regina-maria-tanara.png" alt="Regina Maria Infirmiera">
-                    <p class="caption">Regina în uniformă de soră de caritate, 1917</p>
+            <p>Ea a fost cea care l-a convins pe Regele Ferdinand să rămână ferm în decizia de a nu semna o pace separată umilitoare, mizând totul pe victoria Antantei. Prezența ei în spitalele de campanie, printre soldații muribunzi de tifos, a creat un mit care a funcționat ca un adeziv social în cele mai negre momente ale istoriei noastre.</p>
+        </section>
+
+        <section id="paris" class="reveal">
+            <h2>Misiunea de la Paris (1919)</h2>
+            <div class="bio-info">
+                <div>
+                    <p>Când diplomații români s-au lovit de răceala marilor puteri la Conferința de Pace, Regina Maria a decis să plece personal la Paris. Prim-ministrul Ion I.C. Brătianu întâmpina dificultăți majore, iar România risca să piardă recunoașterea Marii Uniri.</p>
+                    <p>Ajunsă în „Orașul Luminilor”, Regina a folosit arma ei secretă: șarmul personal dublat de o inteligență politică ascuțită. Întâlnirea cu <strong>Georges Clemenceau</strong>, temutul „Tigru” al politicii franceze, a rămas legendară. Când Clemenceau i-a spus tăios: <em>„Doamnă, nu-mi place Prim-ministrul dumneavoastră!”</em>, Maria i-a răspuns dezarmant: <em>„Poate, domnule Președinte, dar mă veți găsi pe mine agreabilă!”</em>.</p>
+                    <p>Prin recepții, întâlniri private și interviuri, ea a pledat cauza României în fața presei internaționale, reușind acolo unde bărbații de stat eșuaseră: a câștigat inimile aliaților și a securizat frontierele României Mari.</p>
                 </div>
-                <div class="img-card">
-                    <img src="https://tse4.mm.bing.net/th/id/OIP.6xPYrXNiFwQdEW-hFYpmEgAAAA" alt="Regina Maria Front">
-                    <p class="caption">Vizită pe linia frontului în Mărășești</p>
+                <div class="img-card" style="max-width: 500px;">
+                    <img src="paris_conferinta.png" alt="Regina Maria la Conferinta de Pace">
+                    <p class="caption">Regina Maria la Paris, în contextul negocierilor diplomatice</p>
                 </div>
             </div>
-            <p>Ea a fost cea care l-a convins pe Regele Ferdinand să rămână ferm în decizia de a nu semna o pace separată umilitoare, mizând totul pe victoria Antantei. Prezența ei în spitalele de campanie, printre soldații muribunzi de tifos, a creat un mit care a funcționat ca un adeziv social în cele mai negre momente ale istoriei noastre.</p>
         </section>
 
         <section id="apogeu" class="reveal">
@@ -329,18 +443,16 @@
         <div class="source-list">
             • Arhivele Naționale, Fond Casa Regală<br>
             • Maria, Regina României, „Povestea vieții mele”<br>
-            • Iorga, N., „Memorii”<br>
-            • Mandache, Diana, „Regina Maria. Capitole târzii”<br>
-            • Arhiva de Stat a Marii Britanii (Foreign Office)<br>
-            • Corespondența privată (Culegerea Humanitas)
+            • Historia.ro - Regina Maria la Paris<br>
+            • Mandache, Diana, „Regina Maria. Capitole târzii”
         </div>
         <br><br>
         <a href="#" class="btn-top" style="color: var(--gold-leaf); text-decoration: none; border: 1px solid; padding: 10px 20px;">REVENIȚI LA VÂRF</a>
-        <p style="margin-top: 50px; opacity: 0.4; font-size: 0.7rem;">© 2026 - Studiu Istoric Digital. Toate drepturile rezervate asupra structurii narative.</p>
+        <p style="margin-top: 50px; opacity: 0.4; font-size: 0.7rem;">© 2026 - Studiu Istoric Digital.</p>
     </footer>
 
     <script>
-        // Reveal elements on scroll
+        
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -353,7 +465,7 @@
             }
         }
 
-        // Reading progress bar
+        
         window.onscroll = function() {
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -362,8 +474,32 @@
             reveal();
         };
 
-        // Trigger initial reveal
+        
         reveal();
+
+        
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption-modal");
+
+        function openModal(imageSrc, caption) {
+            modal.style.display = "flex";
+            modalImg.src = imageSrc;
+            captionText.innerHTML = caption;
+        }
+
+        
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
