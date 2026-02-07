@@ -3,507 +3,423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regina Maria a României: Povestea unei Suverane</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <meta name="description" content="Regina Maria a României - O evocare istorică a suveranei care a făurit România Mare.">
+    <title>Regina Maria | Arhitecta României Mari</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --royal-purple: #3e0a5e;
-            --gold-leaf: #c5a059;
-            --silk-white: #fcfaf7;
-            --deep-ink: #1a1a1a;
-            --transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --primary: #2e1a47;
+            --accent: #c5a059;  
+            --bg-color: #faf9f6; 
+            --text-main: #2c2c2c;
+            --text-light: #666;
+            --gap: 2rem;
         }
 
-        html { scroll-behavior: smooth; }
+       
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Lora', serif;
-            background-color: #f4f1ec;
-            color: var(--deep-ink);
-            margin: 0;
-            line-height: 1.9;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* Bara de progres */
-        #progress-bar {
-            position: fixed;
+        h1, h2, h3, nav a { font-family: 'Playfair Display', serif; }
+
+        img { max-width: 100%; display: block; height: auto; }
+
+      
+        nav {
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: var(--gold-leaf);
-            z-index: 3000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            text-align: center;
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            margin: 0 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
+        nav a:hover { color: var(--accent); }
+
+        
         header {
-            height: 100vh;
-            /* Imagine de fundal */
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), 
-                        url('https://upload.wikimedia.org/wikipedia/commons/e/e9/Regina_Maria_a_Rom%C3%A2niei.jpg');
+            height: 90vh;
+            background-image: linear-gradient(rgba(46, 26, 71, 0.4), rgba(46, 26, 71, 0.7)), url('https://upload.wikimedia.org/wikipedia/commons/e/e9/Regina_Maria_a_Rom%C3%A2niei.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: center 20%;
             background-attachment: fixed;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: #fff;
             text-align: center;
-            border-bottom: 10px solid var(--gold-leaf);
+            padding: 0 20px;
         }
 
         header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3.5rem, 15vw, 7rem);
-            margin: 0;
-            font-weight: 900;
-            letter-spacing: -2px;
-            text-transform: uppercase;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            line-height: 1.1;
         }
 
         header p {
-            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
             font-style: italic;
-            font-size: 1.8rem;
-            color: var(--gold-leaf);
-            max-width: 900px;
-            margin: 30px 20px 0;
+            color: var(--accent);
+            max-width: 800px;
         }
 
-        nav {
-            background: rgba(255, 255, 255, 0.98);
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 10px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+       
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
         }
 
-        nav a {
-            text-decoration: none;
-            color: var(--deep-ink);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            padding: 15px 20px;
-            letter-spacing: 2px;
-            transition: 0.3s;
+        section {
+            margin-bottom: 6rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
 
-        nav a:hover { color: var(--royal-purple); }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        .main-content {
-            max-width: 1100px;
-            margin: -80px auto 80px;
-            background: var(--silk-white);
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
             position: relative;
-            z-index: 10;
-            padding: 100px 120px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.15);
+            padding-bottom: 1rem;
         }
 
-        h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--royal-purple);
-            font-size: 3rem;
-            margin-bottom: 50px;
-            border-bottom: 2px solid #e5e5e5;
-            padding-bottom: 15px;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        h3 {
-            font-family: 'Playfair Display', serif;
-            color: #555;
-            font-size: 2rem;
-            margin-top: 60px;
-            font-style: italic;
-        }
-
-        /* Imagini */
-        .crest-img {
-            height: 80px;
-            width: auto;
-            vertical-align: middle;
-        }
-
-        .sidebar-crest {
-            width: 100%;
-            height: auto;
-            margin-bottom: 15px;
+        .section-title::after {
+            content: "";
             display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 1rem auto 0;
         }
 
-        .historical-block {
-            background: #fff;
-            border-left: 8px solid var(--gold-leaf);
-            padding: 50px;
-            margin: 50px 0;
-            font-size: 1.15rem;
-            box-shadow: 10px 10px 40px rgba(0,0,0,0.02);
-            position: relative;
-        }
-
-        .img-gallery {
+        /
+        .content-block {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 60px 0;
-        }
-
-        .img-card {
-            background: #fff;
-            padding: 15px;
-            border: 1px solid #eee;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .img-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .caption {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            text-align: center;
-            color: #888;
-            margin-top: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .bio-info {
-            display: flex;
-            gap: 50px;
-            align-items: flex-start;
-            margin-bottom: 60px;
-        }
-
-        .quote-box {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-style: italic;
-            text-align: center;
-            padding: 80px 40px;
-            margin: 80px 0;
-            background: linear-gradient(to right, #fdfbf7, #f4effa);
-            color: var(--royal-purple);
-            border-top: 1px solid var(--gold-leaf);
-            border-bottom: 1px solid var(--gold-leaf);
-        }
-
-        .sidebar-note {
-            float: right;
-            width: 250px;
-            margin: 0 0 30px 30px;
-            padding: 25px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            font-size: 0.95rem;
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-        }
-
-        /* Link-uri interactive pentru poze */
-        .interactive-name {
-            color: var(--royal-purple);
-            font-weight: bold;
-            cursor: pointer;
-            border-bottom: 1px dashed var(--gold-leaf);
-            transition: 0.3s;
-        }
-        .interactive-name:hover {
-            background-color: var(--royal-purple);
-            color: white;
-        }
-
-        /* Modal (Fereastra pop-up pentru poze) */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 5000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.9); 
-            justify-content: center;
+            gap: 4rem;
             align-items: center;
         }
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 80%;
-            max-height: 80vh;
-            border: 5px solid var(--gold-leaf);
-            object-fit: contain;
+
+        .text-side p { margin-bottom: 1.5rem; text-align: justify; }
+        
+        .image-side img {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 4px;
         }
-        .close {
-            position: absolute;
-            top: 30px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
+
+      
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             cursor: pointer;
-        }
-        .close:hover, .close:focus {
-            color: var(--gold-leaf);
-        }
-        #caption-modal {
-            margin: auto;
-            display: block;
-            width: 80%;
-            text-align: center;
-            color: #ccc;
-            padding: 10px 0;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
+            overflow: hidden;
         }
 
-        footer {
-            background: #0a0a0a;
-            color: #fff;
-            padding: 120px 20px;
-            text-align: center;
+        .card:hover { transform: translateY(-8px); }
+
+        .card-img-wrap {
+            height: 400px;
+            overflow: hidden;
         }
 
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--gold-leaf);
-            margin-bottom: 20px;
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.5s ease;
         }
 
-        .source-list {
-            max-width: 600px;
-            margin: 40px auto;
-            text-align: left;
+        .card:hover img { transform: scale(1.05); }
+
+        .card-info { padding: 1.5rem; text-align: center; }
+
+        .card-info h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-info span {
             font-size: 0.85rem;
-            color: #666;
-            column-count: 2;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
-        @media (max-width: 900px) {
-            .main-content { padding: 40px 30px; }
-            .img-gallery, .bio-info { flex-direction: column; grid-template-columns: 1fr; }
-            .sidebar-note { width: 100%; float: none; margin: 20px 0; }
-            header h1 { font-size: 3.5rem; }
+        
+        blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            text-align: center;
+            color: var(--primary);
+            margin: 4rem 0;
+            padding: 2rem;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+    
+        footer {
+            background: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 4rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        footer p { margin-top: 1rem; }
+
+    
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+        }
+
+        #modal img {
+            max-height: 80vh;
+            max-width: 90%;
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        #modal-caption {
+            color: var(--accent);
+            margin-top: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+   
+        @media (max-width: 768px) {
+            header { background-attachment: scroll; }
+            .content-block { grid-template-columns: 1fr; gap: 2rem; }
+            .section-title { font-size: 2rem; }
+            blockquote { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-        <div id="caption-modal"></div>
+    <div id="modal" onclick="this.style.display='none'">
+        <img id="modal-img" src="" alt="Detalii istorice">
+        <div id="modal-caption"></div>
     </div>
-    
-    <div id="progress-bar"></div>
-
-    <header>
-        <h1 class="reveal">MARIA</h1>
-        <p class="reveal">1875 – 1938<br>Arhitecta României Mari: O viziune dinastică între tradiție și modernitate.</p>
-    </header>
 
     <nav>
-        <a href="#genealogie">Genealogie</a>
-        <a href="#familie">Dinastie</a>
-        <a href="#anturaj">Cercul de Aur</a>
-        <a href="#razboi">Marele Război</a>
-        <a href="#paris">Conferința Paris</a>
-        <a href="#apogeu">Încoronarea</a>
-        <a href="#creatie">Moștenire</a>
+        <a href="#biografie">Biografie</a>
+        <a href="#dinastie">Dinastie</a>
+        <a href="#aliante">Alianțe</a>
+        <a href="#istorie">Marele Război</a>
+        <a href="#mostenire">Moștenire</a>
     </nav>
 
-    <div class="main-content">
-        
-        <section id="genealogie" class="reveal">
-            <h2>
-                Rădăcinile unui Destin Imperial
-                <img src="stema_anglia.png" alt="Stema Regala a Marii Britanii" class="crest-img">
-            </h2>
-            <div class="bio-info">
-                <div>
-                    <p>Născută <strong>Maria Alexandra Victoria</strong> pe 29 octombrie 1875, la Eastwell Park, în comitatul Kent, viitoarea regină a purtat în sângele ei moștenirea celor mai puternice imperii ale lumii. Tatăl său era Alfred, Duce de Edinburgh (fiul Reginei Victoria a Marii Britanii), iar mama sa, Marea Ducesă Maria Alexandrovna, era unica fiică a Țarului Alexandru al II-lea al Rusiei.</p>
-                    <p>Cunoscută în familie sub numele de alint <em>„Missy”</em>, ea a primit o educație aleasă, dar a dezvoltat și un spirit independent, mult mai liber decât impuneau canoanele stricte ale epocii victoriene. Această combinație de noblețe britanică și opulență rusă avea să definească stilul său inconfundabil.</p>
+    <header>
+        <h1>MARIA</h1>
+        <p>1875 – 1938<br>Suverana care a rescris istoria României</p>
+    </header>
+
+    <main>
+        <section id="biografie">
+            <h2 class="section-title">Destinul unei Regine</h2>
+            <div class="content-block">
+                <div class="image-side">
+                    <img src="stema_romania.jpg" alt="Stema Regală">
                 </div>
-            </div>
-            
-            <div class="historical-block">
-                <h3>Sinteza a Două Lumi</h3>
-                <p>De la bunica sa, legendara Regină Victoria, Maria a învățat importanța datoriei față de stat și arta de a comunica cu poporul. De la ramura rusă a Romanovilor, a moștenit gustul pentru artă, misticism și convingerea că un monarh trebuie să fie o figură inspirațională, aproape sacră, pentru națiunea sa. Această dualitate a transformat-o dintr-o principesă străină într-o suverană autentic română.</p>
-            </div>
-        </section>
-
-        <section id="familie" class="reveal">
-            <h2>Dinastia și Rețeaua Diplomatică</h2>
-            
-            <div class="sidebar-note">
-                <img src="stema_romania.jpg" alt="Stema Regatului României" class="sidebar-crest">
-                <strong>Simbolul Unirii:</strong> Stema României Întregite, sub care Dinastia și-a îndeplinit menirea istorică.
-            </div>
-
-            <div style="float: left; width: 200px; margin-right: 20px; margin-bottom: 20px;">
-                <img src="ferdinand_maria.png" alt="Regele Ferdinand și Regina Maria" style="width:100%; border: 4px solid #eee;">
-            </div>
-
-            <p>Căsătoria din 29 decembrie 1892 cu Principele Moștenitor Ferdinand de Hohenzollern-Sigmaringen a marcat începutul destinului ei românesc. Deși venită dintr-o lume diferită, Maria a înțeles rapid că puterea ei constă în crearea unei dinastii puternice, care să conecteze România la marile case regale ale Europei.</p>
-            
-            <p style="clear:both;"><strong>Urmașii Coroanei (Click pe nume pentru portret):</strong></p>
-            <ul>
-                <li>
-                    <span class="interactive-name" onclick="openModal('carol.png', 'Carol al II-lea (1893-1953)')">Carol al II-lea</span>: 
-                    Rege al României și o personalitate controversată, sub a cărui domnie cultura română a atins apogeul interbelic.
-                </li>
-                <li>
-                    <span class="interactive-name" onclick="openModal('elisabeta.png', 'Principesa Elisabeta (1894-1956)')">Elisabeta</span>: 
-                    Devenită Regină a Greciei, o fire enigmatică și artistă, retrasă adesea din viața publică.
-                </li>
-                <li><strong>Mărioara (Mignon):</strong> Regină a Iugoslaviei, simbol al alianței strategice din Balcani și confidenta mamei sale.</li>
-                <li><strong>Nicolae:</strong> Principele Regent, o figură populară în armată și în viața mondenă a Bucureștiului.</li>
-                <li><strong>Ileana:</strong> Arhiducesă de Austria, cea care i-a moștenit cel mai mult caracterul hotărât și credința.</li>
-                <li><strong>Mircea:</strong> Mezinul familiei, dispărut tragic la doar 3 ani, în timpul Primului Război Mondial, a cărui pierdere a marcat-o profund pe Regină.</li>
-            </ul>
-        </section>
-
-        <section id="anturaj" class="reveal">
-            <h2>Cercul de Aur: Prieteni și Influențe</h2>
-            <p>Maria nu a condus singură, ci a știut să se înconjoare de minți strălucite. Relația ei cu 
-            <span class="interactive-name" onclick="openModal('stirbey.png', 'Regina Maria și Barbu Știrbey')">Barbu Știrbey</span> 
-            a fost una fundamentală. Acesta, în calitatea sa de administrator al Domeniilor Coroanei și sfătuitor politic, a ajutat la echilibrarea deciziilor Regelui Ferdinand.</p>
-            
-            <p>Pe plan extern, prietenia cu scriitoarea 
-            <span class="interactive-name" onclick="openModal('martha.png', 'Regina Maria și Martha Bibescu')">Martha Bibescu</span> 
-            a deschis ușile saloanelor pariziene. Prin aceste legături, interesele României erau promovate subtil, dar eficient, acolo unde diplomația clasică eșua.</p>
-        </section>
-
-        <div class="quote-box reveal">
-            „Te binecuvântez, iubită Românie, țara bucuriilor și durerilor mele, frumoasă țară, care ai trăit în inima mea...”
-        </div>
-
-        <section id="razboi" class="reveal">
-            <h2>Marele Război și „Mama Răniților”</h2>
-            <p>Adevărata dimensiune a caracterului său s-a relevat în anii teribili ai Primului Război Mondial (1916-1918). În timp ce guvernul și armata se retrăgeau în Moldova, iar speranța părea pierdută, Regina Maria a refuzat resemnarea.</p>
-            <p>Îmbrăcată în uniformă de soră medicală de Cruce Roșie, a mers pe front, în spitalele de campanie pline de tifos și în gările ticsite de răniți. Nu s-a temut de boli sau de gloanțe. Această atitudine i-a adus supranumele de <strong>„Mama Răniților”</strong>. Soldații o adorau, văzând în ea singurul sprijin moral într-un ocean de suferință.</p>
-        </section>
-
-        <section id="paris" class="reveal">
-            <h2>Misiunea Diplomatică de la Paris (1919)</h2>
-            <div class="bio-info">
-                <div>
-                    <p>După război, recunoașterea Marii Uniri de către Marile Puteri nu era garantată. Diplomații români întâmpinau dificultăți la Conferința de Pace de la Paris. Într-o mișcare fără precedent, Regele și Guvernul au decis să o trimită pe Regină într-o vizită neoficială, dar crucială.</p>
-                    <p>Ajunsă în capitala Franței, Maria a cucerit presa și liderii politici prin inteligență și carismă. Discuțiile ei cu Președintele Franței, Raymond Poincaré, și cu premierul Georges Clemenceau sunt legendare. Când „Tigrul” Clemenceau a încercat să fie distant, Regina l-a dezarmat prin replici curajoase și un farmec irezistibil, punând România pe harta noii Europe.</p>
-                </div>
-                <div class="img-card" style="max-width: 500px;">
-                    <img src="paris_conferinta.png" alt="Regina Maria la Conferinta de Pace">
-                    <p class="caption">Regina Maria la Paris, pledând cauza României</p>
+                <div class="text-side">
+                    <p>Născută la Eastwell Park, în Marea Britanie, Maria Alexandra Victoria a fost o punte între două imperii: nepoată a Reginei Victoria și a Țarului Alexandru al II-lea. Sosirea sa în România, la doar 17 ani, a marcat începutul unei transformări profunde, atât a personalității sale, cât și a monarhiei române.</p>
+                    <p>Deși străină de sânge, a devenit româncă prin alegere și sacrificiu. Inteligența sa politică, dublată de un farmec irezistibil, a transformat-o într-un partener egal al Regelui Ferdinand și într-o figură iconică a Europei interbelice.</p>
                 </div>
             </div>
         </section>
 
-        <section id="apogeu" class="reveal">
-            <h2>Încoronarea de la Alba Iulia</h2>
-            <p>Momentul de triumf suprem a avut loc pe <strong>15 octombrie 1922</strong>, la Alba Iulia, orașul simbol al unității naționale. În fața Catedralei Reîntregirii, Ferdinand și Maria au fost încoronați ca suverani ai tuturor românilor.</p>
-            <p>Regina a purtat o coroană unică, comandată la Paris, realizată din aur transilvănean, cu un design inspirat din iconografia bizantină și de frescele de la Curtea de Argeș. Gestul a fost clar: Dinastia nu mai era una germană, ci una profund românească, continuatoare a tradițiilor voievodale.</p>
+        <section id="dinastie">
+            <h2 class="section-title">Dinastia Regală</h2>
+            <div class="grid-gallery">
+                <article class="card" onclick="openLightbox('carol.png', 'Carol al II-lea (1893-1953) - Regele Culturii')">
+                    <div class="card-img-wrap">
+                        <img src="carol.png" alt="Carol al II-lea">
+                    </div>
+                    <div class="card-info">
+                        <h3>Carol al II-lea</h3>
+                        <span>Regele României</span>
+                    </div>
+                </article>
+
+                <article class="card" onclick="openLightbox('ferdinand_maria.png', 'Regele Ferdinand I și Regina Maria - Făuritorii Marii Uniri')">
+                    <div class="card-img-wrap">
+                        <img src="ferdinand_maria.png" alt="Cuplul Regal">
+                    </div>
+                    <div class="card-info">
+                        <h3>Ferdinand & Maria</h3>
+                        <span>Suveranii Unirii</span>
+                    </div>
+                </article>
+
+                <article class="card" onclick="openLightbox('elisabeta.png', 'Principesa Elisabeta - Regina Greciei')">
+                    <div class="card-img-wrap">
+                        <img src="elisabeta.png" alt="Principesa Elisabeta">
+                    </div>
+                    <div class="card-info">
+                        <h3>Elisabeta</h3>
+                        <span>Regina Greciei</span>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <section id="creatie" class="reveal">
-            <h2>Moștenirea Culturală și Testamentul</h2>
-            <p>Dincolo de politică, Regina Maria a fost o artistă desăvârșită. A scris povești pentru copii, poezii și memorii, cea mai cunoscută operă a sa fiind <em>„Povestea vieții mele”</em>, un bestseller internațional la acea vreme.</p>
-            <p>Iubea arhitectura și grădinile. A transformat <strong>Castelul Bran</strong> într-o reședință regală primitoare, iar la <strong>Balcic</strong> și-a construit „Cuibul Liniștit” (Tenha Juvah), un loc de vis pe malul mării, unde stilul mediteranean se împletea cu cel oriental.</p>
-            <p>La moartea sa, pe 18 iulie 1938, a lăsat un testament emoționant: trupul i-a fost înmormântat la Mănăstirea Curtea de Argeș, alături de Regele Ferdinand, însă inima i-a fost depusă, conform dorinței sale, în capela Stella Maris de la Balcic, rămânând veșnic legată de locurile pe care le-a iubit.</p>
+        <blockquote>
+            „Nu am nici o altă putere decât aceea de a vă iubi.”
+        </blockquote>
+
+        <section id="aliante">
+            <h2 class="section-title">Cercul de Aur și Diplomația</h2>
+            <div class="grid-gallery">
+                <article class="card" onclick="openLightbox('stirbey.png', 'Barbu Știrbey - Administratorul Domeniilor Coroanei și sfetnic de taină')">
+                    <div class="card-img-wrap">
+                        <img src="stirbey.png" alt="Barbu Stirbey">
+                    </div>
+                    <div class="card-info">
+                        <h3>Barbu Știrbey</h3>
+                        <span>Om de Stat</span>
+                    </div>
+                </article>
+
+                <article class="card" onclick="openLightbox('paris_conferinta.png', 'Regina Maria la Conferința de Pace de la Paris (1919)')">
+                    <div class="card-img-wrap">
+                        <img src="paris_conferinta.png" alt="Paris 1919">
+                    </div>
+                    <div class="card-info">
+                        <h3>Paris 1919</h3>
+                        <span>Misiune Diplomatică</span>
+                    </div>
+                </article>
+
+                <article class="card" onclick="openLightbox('martha.png', 'Martha Bibescu - Scriitoare și figură centrală a aristocrației europene')">
+                    <div class="card-img-wrap">
+                        <img src="martha.png" alt="Martha Bibescu">
+                    </div>
+                    <div class="card-info">
+                        <h3>Martha Bibescu</h3>
+                        <span>Scriitoare</span>
+                    </div>
+                </article>
+            </div>
         </section>
 
-    </div>
+        <section id="istorie">
+            <h2 class="section-title">Mama Răniților</h2>
+            <div class="content-block">
+                <div class="text-side">
+                    <p>Primul Război Mondial a reprezentat testul suprem al caracterului său. Refuzând refugiul sigur în Rusia, Regina a rămas alături de armată și popor în triunghiul morții din Moldova. Îmbrăcată în uniforma de soră medicală, a sfidat tifosul și pericolul frontului.</p>
+                    <p>Prezența sa în spitalele de campanie a ridicat moralul unei națiuni îngenuncheate. Generalul Prezan nota: „Regina noastră face cât o divizie de armată.” Această devotare totală i-a asigurat un loc etern în conștiința românilor.</p>
+                </div>
+                <div class="image-side">
+                    <div style="background: #e8e6e1; padding: 40px; border-left: 5px solid var(--primary); font-style: italic;">
+                        <p style="font-size: 1.2rem; text-align: center; margin: 0;">„Țara mea, de am greșit, tu să mă ierți, căci am iubit prea mult.”</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mostenire">
+            <h2 class="section-title">Testamentul de la Balcic</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                Balcic a fost „cuibul liniștit” (Tenha Juvah), locul unde sufletul Reginei și-a găsit pacea. Grădinile suspendate, vila cu arhitectură mediteraneană și capela Stella Maris rămân mărturii ale gustului său artistic desăvârșit. Conform dorinței sale testamentare, inima i-a fost depusă acolo, străjuind marea pe care a iubit-o atât de mult.
+            </p>
+        </section>
+    </main>
 
     <footer>
-        <div class="footer-logo">MARIA REGINA ROMÂNIEI</div>
-        <div class="source-list">
-            <strong>Surse documentare:</strong><br>
-            • Casa Majestății Sale Custodele Coroanei - familia-regala.ro<br>
-            • Arhivele Naționale ale României<br>
-            • Maria, Regina României, „Povestea vieții mele”
-        </div>
-        <br><br>
-        <a href="#" style="color: var(--gold-leaf); text-decoration: none; border: 1px solid; padding: 10px 20px;">REVENIȚI LA VÂRF</a>
-        <p style="margin-top: 50px; opacity: 0.4; font-size: 0.7rem;">© 2026 - Proiect Istoric Educativ.</p>
+        <p>&copy; 2026 Arhivele Istorice Digitale.</p>
+        <p style="opacity: 0.5; font-size: 0.8rem;">Proiect dedicat memoriei Reginei Maria.</p>
     </footer>
 
     <script>
-        // Funcția de animație la scroll (Reveal)
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 80;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-
-        // Bara de progres și declanșarea animațiilor
-        window.onscroll = function() {
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            document.getElementById("progress-bar").style.width = scrolled + "%";
-            reveal();
+       
+        const observerOptions = {
+            threshold: 0.1
         };
 
-        // Inițializare la încărcare
-        reveal();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-        // LOGICA PENTRU GALERIA FOTO (MODAL)
-        var modal = document.getElementById("imageModal");
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption-modal");
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
 
-        function openModal(imageSrc, caption) {
-            modal.style.display = "flex";
-            modalImg.src = imageSrc;
-            captionText.innerHTML = caption;
+       
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalCaption = document.getElementById('modal-caption');
+
+        function openLightbox(src, text) {
+            modal.style.display = 'flex';
+            modalImg.src = src;
+            modalCaption.textContent = text;
         }
 
-        // Închidere modal la X
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() { 
-            modal.style.display = "none";
-        }
-
-        // Închidere modal la click în afară
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+      
     </script>
 </body>
-</html>;
+</html>
 
