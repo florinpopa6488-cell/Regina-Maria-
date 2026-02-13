@@ -14,7 +14,6 @@
             --accent: #c5a059;  
             --bg-color: #faf9f6;
             --text-main: #1a1a1a;
-            --gap: 2rem;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,10 +30,8 @@
         
         strong { color: var(--primary); font-weight: 600; }
 
-    
         img { max-width: 100%; display: block; height: auto; border-radius: 3px; }
 
-       
         nav {
             position: sticky;
             top: 0;
@@ -61,10 +58,8 @@
 
         nav a:hover { color: var(--accent); border-bottom: 2px solid var(--accent); }
 
-      
         header {
             height: 90vh;
-          
             background-image: linear-gradient(rgba(46, 26, 71, 0.4), rgba(46, 26, 71, 0.7)), url('ferdinand_maria.png');
             background-size: cover;
             background-position: center top;
@@ -93,14 +88,12 @@
             max-width: 800px;
         }
 
-
         main {
             max-width: 1280px;
             margin: 0 auto;
             padding: 5rem 1.5rem;
         }
 
-       
         section {
             margin-bottom: 8rem;
             opacity: 0;
@@ -130,7 +123,6 @@
             margin-top: 10px;
         }
 
-      
         .content-block {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -153,6 +145,14 @@
 
         .text-side p { margin-bottom: 1.5rem; }
 
+        .image-side {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+        }
+
         .image-side img {
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             border: 8px solid #fff;
@@ -163,7 +163,6 @@
             transform: scale(1.02);
         }
 
-      
         .children-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -195,7 +194,6 @@
         .child-card .role { color: var(--accent); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem; display: block;}
         .child-card p { font-size: 0.95rem; line-height: 1.6; color: #555; text-align: left; }
 
-       
         .wealth-box {
             background: #2e1a47;
             color: #fff;
@@ -212,7 +210,6 @@
         .wealth-text li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
         .wealth-text li::before { content: "✦"; color: var(--accent); position: absolute; left: 0; }
 
-       
         blockquote {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -235,7 +232,6 @@
             border-top: 3px solid var(--accent);
         }
 
-   
         @media (max-width: 900px) {
             .content-block, .content-block.reverse, .wealth-box { grid-template-columns: 1fr; direction: ltr; padding: 2rem; }
             .section-title { font-size: 2.2rem; }
@@ -243,7 +239,6 @@
             .child-img { height: 300px; }
         }
 
-      
         #modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column; opacity: 0; transition: opacity 0.3s;}
         #modal.show { opacity: 1; }
         #modal img { max-height: 80vh; max-width: 90%; border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(197, 160, 89, 0.5); }
@@ -280,7 +275,7 @@
                 </div>
                 <div class="text-side">
                     <p>Născută la Eastwell Park, nepoată a Reginei Victoria a Marii Britanii și a Țarului Alexandru al II-lea, Maria Alexandra Victoria a sosit în România în 1893. Deși străină, s-a identificat complet cu durerile și aspirațiile poporului român.</p>
-                    <p>În timpul <strong>Marelui Război (1916-1918)</strong>, rolul său a fost decisiv. Refuzând sfaturile de a părăsi țara în fața ocupației germane, Regina s-a retras în Moldova. Acolo, îmbrăcată în uniformă de soră de caritate, a vizitat spitalele de pe front, tifozarii și tranșeele, sfidând gloanțele și epidemiile. Generalul Prezan afirma: <em>„Regina a fost cel mai bun ministru de legătură al nostru.”</em></p>
+                    <p>În timpul <strong>Marelui Război (1916-1918)</strong>, rolul său a fost decisiv. Refuzând sfaturile de a părăsi țara în fața ocupației germane, Regina s-a retras în Moldova. Acolo, îmbrăcată în uniformă de soră de caritate, a vizitat spitalele de pe front, bolnavii de tifos și tranșeele, sfidând gloanțele și epidemiile. Generalul Prezan afirma: <em>„Regina a fost cel mai bun ministru de legătură al nostru.”</em></p>
                     <p>Curajul său a ridicat moralul armatei, soldații numind-o „Mama Răniților”. Într-o perioadă în care politicienii ezitau, ea a susținut neclintit alianța cu Antanta, pariind totul pe victoria finală și pe visul României Mari.</p>
                 </div>
             </div>
@@ -293,7 +288,7 @@
                     <img src="paris_conferinta.png" alt="Regina Maria la Paris">
                 </div>
                 <div class="text-side">
-                    <p>Conferința de Pace de la Paris părea să fie un eșec pentru România, tratată ca o țară învinsă secundară. Într-un gest diplomatic fără precedent, Regele Ferdinand o trimite pe Regină la Paris.</p>
+                    <p>Conferința de Pace de la Paris părea să fie un eșec pentru România, tratată ca o țară învinsă secundară. Într-un gest diplomatic fără precedent, Regele Ferdinand a trimis-o pe Regină la Paris.</p>
                     <p>Prezența ei a schimbat cursul istoriei. Cu o garderobă spectaculoasă și o carismă debordantă, Maria l-a cucerit pe premierul francez <strong>Georges Clemenceau</strong>. La celebra replică a acestuia („Doamnă, cereți partea leului pentru România!”), Regina a răspuns: <em>„Așa este, domnule Prim-Ministru, de aceea am venit să discut cu vărul său, Tigrul.”</em></p>
                     <p>Întâlnirile sale cu Președintele Woodrow Wilson și Regele George al V-lea al Angliei au asigurat recunoașterea internațională a Marii Uniri. Presa franceză a titrat: „O Regină mare pentru o Românie Mare”.</p>
                 </div>
@@ -360,7 +355,7 @@
                     <p>Supranumit „Prințul Alb”, administrator al Domeniilor Coroanei și prim-ministru. Un om de o discreție absolută și o inteligență politică rară, Știrbey a fost sfetnicul principal al cuplului regal timp de decenii.</p>
                     
                     <h3>Martha Bibescu</h3>
-                    <p>Scriitoare celebră în toată Europa, Martha a fost una dintre puținele femei care i-au egalat inteligența Reginei. Prietenia lor a legat Bucureștiul de marile saloane literare ale Parisului.</p>
+                    <p>Scriitoare celebră în toată Europa, Martha a fost una dintre puținele femei care au egalat inteligența Reginei. Prietenia lor a legat Bucureștiul de marile saloane literare ale Parisului.</p>
                 </div>
                 <div class="image-side" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                     <img src="stirbey.png" alt="Barbu Stirbey" style="height: 100%; object-fit: cover;">
@@ -380,7 +375,7 @@
                         <li><strong>Bijuteriile:</strong> Celebra coroană de aur de la încoronare, safirul gigant (478 carate) și diademele Romanov au făcut parte dintr-o colecție legendară, parțial pierdută sau vândută în exil.</li>
                     </ul>
                 </div>
-                <div class="wealth-img">
+                <div class="wealth-img image-side">
                     <img src="balcic.jpg" alt="Domeniul Balcic">
                     <p style="color: #ddd; font-size: 0.8rem; text-align: center; margin-top: 5px;">Grădinile Castelului de la Balcic</p>
                 </div>
@@ -398,7 +393,6 @@
     </footer>
 
     <script>
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -407,14 +401,12 @@
 
         document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-       
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modal-img');
         const modalCaption = document.getElementById('modal-caption');
 
         function openLightbox(src, caption) {
             modal.style.display = 'flex';
-           
             setTimeout(() => { modal.classList.add('show'); }, 10);
             modalImg.src = src;
             modalCaption.innerText = caption;
@@ -425,7 +417,6 @@
             setTimeout(() => { modal.style.display = 'none'; }, 300);
         }
         
-    
         document.addEventListener('keydown', (e) => {
             if(e.key === "Escape") closeLightbox();
         });
