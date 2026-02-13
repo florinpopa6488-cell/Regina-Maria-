@@ -224,4 +224,220 @@
         
         .wealth-text h3 { color: var(--accent); font-size: 2rem; margin-bottom: 1.5rem; }
         .wealth-text ul { list-style: none; margin-top: 1.5rem; }
-        .wealth
+        .wealth-text li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
+        .wealth-text li::before { content: "✦"; color: var(--accent); position: absolute; left: 0; }
+
+        blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            text-align: center;
+            color: var(--primary);
+            margin: 4rem 0;
+            padding: 2rem;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            background: #fff;
+        }
+
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 4rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent);
+        }
+
+        @media (max-width: 900px) {
+            .content-block, .content-block.reverse, .wealth-box { grid-template-columns: 1fr; direction: ltr; padding: 2rem; }
+            .section-title { font-size: 2.2rem; }
+            header h1 { font-size: 3.5rem; }
+            .child-img { height: 300px; }
+            .image-side img { max-width: 100%; }
+        }
+
+        #modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column; opacity: 0; transition: opacity 0.3s;}
+        #modal.show { opacity: 1; }
+        #modal img { max-height: 80vh; max-width: 90%; border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(197, 160, 89, 0.5); }
+        #modal-caption { color: #fff; margin-top: 1rem; font-size: 1.2rem; font-family: 'Playfair Display', serif; text-align: center; padding: 0 20px;}
+    </style>
+</head>
+<body>
+
+    <div id="modal" onclick="closeLightbox()">
+        <img id="modal-img" src="" alt="">
+        <div id="modal-caption"></div>
+    </div>
+
+    <nav>
+        <a href="#destin">Destin & Război</a>
+        <a href="#paris">Paris 1919</a>
+        <a href="#dinastia">Dinastia</a>
+        <a href="#cercul">Cercul Intim</a>
+        <a href="#avere">Moștenire & Balcic</a>
+    </nav>
+
+    <header>
+        <h1>MARIA</h1>
+        <p>„Nu există domeniu în care să nu-mi fi încercat puterile... Am iubit viața, lumina și marea.”</p>
+    </header>
+
+    <main>
+        <section id="destin">
+            <h2 class="section-title">Regina Soldat și Unirea</h2>
+            <div class="content-block">
+                <div class="image-side">
+                    <img src="ferdinand_maria.png" alt="Regele Ferdinand și Regina Maria la Încoronare">
+                    <p style="text-align: center; font-size: 0.85rem; margin-top: 10px; color: #666;">Încoronarea de la Alba Iulia (15 octombrie 1922)</p>
+                </div>
+                <div class="text-side">
+                    <p>Născută la Eastwell Park, nepoată a Reginei Victoria a Marii Britanii și a Țarului Alexandru al II-lea, Maria Alexandra Victoria a sosit în România în 1893. Deși străină, s-a identificat complet cu durerile și aspirațiile poporului român.</p>
+                    <p>În timpul <strong>Marelui Război (1916-1918)</strong>, rolul său a fost decisiv. Refuzând sfaturile de a părăsi țara în fața ocupației germane, Regina s-a retras în Moldova. Acolo, îmbrăcată în uniformă de soră de caritate, a vizitat spitalele de pe front, bolnavii de tifos și tranșeele, sfidând gloanțele și epidemiile. Generalul Prezan afirma: <em>„Regina a fost cel mai bun ministru de legătură al nostru.”</em></p>
+                    <p>Curajul său a ridicat moralul armatei, soldații numind-o „Mama Răniților”. Într-o perioadă în care politicienii ezitau, ea a susținut neclintit alianța cu Antanta, pariind totul pe victoria finală și pe visul României Mari.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="paris">
+            <h2 class="section-title">Ambasadorul Irezistibil: Paris 1919</h2>
+            <div class="content-block reverse">
+                <div class="image-side">
+                    <img src="paris_conferinta.png" alt="Regina Maria la Paris">
+                </div>
+                <div class="text-side">
+                    <p>Conferința de Pace de la Paris părea să fie un eșec pentru România, tratată ca o țară învinsă secundară. Într-un gest diplomatic fără precedent, Regele Ferdinand a trimis-o pe Regină la Paris.</p>
+                    <p>Prezența ei a schimbat cursul istoriei. Cu o garderobă spectaculoasă și o carismă debordantă, Maria l-a cucerit pe premierul francez <strong>Georges Clemenceau</strong>. La celebra replică a acestuia („Doamnă, cereți partea leului pentru România!”), Regina a răspuns: <em>„Așa este, domnule Prim-Ministru, de aceea am venit să discut cu vărul său, Tigrul.”</em></p>
+                    <p>Întâlnirile sale cu Președintele Woodrow Wilson și Regele George al V-lea al Angliei au asigurat recunoașterea internațională a Marii Uniri. Presa franceză a titrat: „O Regină mare pentru o Românie Mare”.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dinastia">
+            <h2 class="section-title">Viitorul Dinastiei</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto;">„Copiii mei sunt inima mea... ei sunt singura mea avere adevărată.”</p>
+            
+            <div class="children-grid">
+                <div class="child-card" onclick="openLightbox('carol.png', 'Carol al II-lea: Regele Culturii și al Restaurației.')">
+                    <img src="carol.png" alt="Carol al II-lea" class="child-img">
+                    <h3>Carol al II-lea</h3>
+                    <span class="role">Regele României (1930-1940)</span>
+                    <p>Primul născut. O figură complexă și controversată. Deși a abdicat de două ori, domnia sa a marcat o înflorire culturală fără precedent (Fundațiile Regale). Relația cu mama sa s-a răcit dramatic după revenirea sa pe tron în 1930.</p>
+                </div>
+
+                <div class="child-card" onclick="openLightbox('elisabeta.png', 'Elisabeta: Regina Greciei, o frumusețe tăcută.')">
+                    <img src="elisabeta.png" alt="Elisabeta" class="child-img">
+                    <h3>Elisabeta</h3>
+                    <span class="role">Regina Greciei</span>
+                    <p>Cunoscută în familie ca „Lisabetha”. S-a căsătorit cu George al II-lea al Greciei, dar mariajul a fost nefericit și s-a încheiat cu divorț. S-a retras la Palatul Elisabeta din București, dedicându-se artelor.</p>
+                </div>
+
+                <div class="child-card" onclick="openLightbox('mignon.jpg', 'Mignon: Regina Iugoslaviei, simbolul păcii în Balcani.')">
+                    <img src="mignon.jpg" alt="Mignon" class="child-img">
+                    <h3>Mignon (Maria)</h3>
+                    <span class="role">Regina Iugoslaviei</span>
+                    <p>Fiica cea mai echilibrată. Căsătoria ei cu Regele Alexandru I al Iugoslaviei a fost una fericită și strategică. A rămas văduvă după asasinatul de la Marsilia (1934), conducând regența cu demnitate.</p>
+                </div>
+
+                <div class="child-card" onclick="openLightbox('nicolae.jpg', 'Nicolae: Prințul Regent.')">
+                    <img src="nicolae.jpg" alt="Principele Nicolae" class="child-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c5/Prince_Nicholas_of_Romania_1920s.jpg'">
+                    <h3>Nicolae</h3>
+                    <span class="role">Principe Regent</span>
+                    <p>Rebelul familiei, pasionat de automobilism și aviație. A condus Regența (1927-1930) pentru minorul Mihai I. Conflictul cu fratele său Carol l-a costat titlurile și exilul.</p>
+                </div>
+
+                <div class="child-card" onclick="openLightbox('ileana.jpg', 'Ileana: De la Arhiducesă la Maica Alexandra.')">
+                    <img src="ileana.jpg" alt="Ileana" class="child-img">
+                    <h3>Ileana</h3>
+                    <span class="role">Arhiducesă de Austria</span>
+                    <p>„Copilul cu ochi albaștri”. A moștenit spiritul caritabil al mamei. A fondat Spitalul „Inima Reginei” la Bran. În exilul american, a devenit monahie ortodoxă, fondând Mănăstirea din Ellwood City.</p>
+                </div>
+
+                <div class="child-card" onclick="openLightbox('mircea.jpg', 'Micul Mircea, marea durere.')">
+                    <img src="mircea.jpg" alt="Mircea" class="child-img">
+                    <h3>Mircea</h3>
+                    <span class="role">Principe (1913-1916)</span>
+                    <p>Cel mai mic dintre copii, mort tragic de febră tifoidă în plin război. Durerea pierderii lui a urmărit-o pe Regină toată viața. Mormântul său se află la Castelul Bran, lângă inima mamei sale.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cercul">
+            <h2 class="section-title">Cercul de Încredere</h2>
+            <div class="content-block">
+                <div class="text-side">
+                    <h3>Colonelul Joe Boyle</h3>
+                    <p>Aventurierul canadian care a devenit „salvatorul” familiei regale în momentele critice din 1917-1918. <strong>Joe Boyle</strong> a negociat cu bolșevicii returnarea tezaurului și a arhivei, a organizat aprovizionarea Moldovei înfometate și i-a fost un sprijin moral esențial Reginei.</p>
+                    
+                    <h3>Barbu Știrbey</h3>
+                    <p>Supranumit „Prințul Alb”, administrator al Domeniilor Coroanei și prim-ministru. Un om de o discreție absolută și o inteligență politică rară, Știrbey a fost sfetnicul principal al cuplului regal timp de decenii.</p>
+                    
+                    <h3>Martha Bibescu</h3>
+                    <p>Scriitoare celebră în toată Europa, Martha a fost una dintre puținele femei care au egalat inteligența Reginei. Prietenia lor a legat Bucureștiul de marile saloane literare ale Parisului.</p>
+                </div>
+                <div class="image-side collage-container">
+                    <img src="stirbey.png" alt="Barbu Stirbey">
+                    <img src="boyle.jpg" alt="Joe Boyle">
+                </div>
+            </div>
+        </section>
+
+        <section id="avere">
+            <div class="wealth-box">
+                <div class="wealth-text">
+                    <h3>Testamentul și Locurile de Suflet</h3>
+                    <p>Regina Maria a lăsat poporului român o moștenire spirituală și materială imensă. Testamentul său literar, <em>„Țării mele și Poporului meu”</em>, rămâne unul dintre cele mai emoționante documente din istoria noastră.</p>
+                    <ul>
+                        <li><strong>Domeniul Balcic:</strong> Construit pe Coasta de Argint, „Cuibul Liniștit” (Tenha Juvah) a fost capodopera sa. Grădinile suspendate, vila în stil mediteranean și Capela Stella Maris reflectă sufletul său artistic.</li>
+                        <li><strong>Castelul Bran:</strong> Dăruit Reginei de orașul Brașov în 1920, a fost transformat de aceasta dintr-o cetate rece într-un cămin regal plin de căldură.</li>
+                        <li><strong>Bijuteriile:</strong> Celebra coroană de aur de la încoronare, safirul gigant (478 carate) și diademele Romanov au făcut parte dintr-o colecție legendară, parțial pierdută sau vândută în exil.</li>
+                    </ul>
+                </div>
+                <div class="image-side wealth-img">
+                    <img src="balcic.jpg" alt="Domeniul Balcic">
+                    <p style="color: #ddd; font-size: 0.8rem; text-align: center; margin-top: 5px;">Grădinile Castelului de la Balcic</p>
+                </div>
+            </div>
+        </section>
+
+        <blockquote id="citat-final">
+            „Te binecuvântez, iubită Românie, țara bucuriilor și durerilor mele, frumoasă țară, care ai trăit în inima mea și ale cărei cărări le-am cunoscut toate.”
+        </blockquote>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Arhive Istorice Digitale. Website dedicat Memoriei Reginei Maria.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalCaption = document.getElementById('modal-caption');
+
+        function openLightbox(src, caption) {
+            modal.style.display = 'flex';
+            setTimeout(() => { modal.classList.add('show'); }, 10);
+            modalImg.src = src;
+            modalCaption.innerText = caption;
+        }
+        
+        function closeLightbox() {
+            modal.classList.remove('show');
+            setTimeout(() => { modal.style.display = 'none'; }, 300);
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if(e.key === "Escape") closeLightbox();
+        });
+    </script>
+</body>
+</html>
